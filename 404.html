@@ -3,39 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <title>Redirecting to kharchlog.com…</title>
-  <link rel="canonical" id="canon" href="https://kharchlog.com/" />
-  <meta http-equiv="refresh" id="refresh" content="0;url=https://kharchlog.com/" />
+  <link rel="canonical" href="https://kharchlog.com/" />
+  <!-- No meta-refresh race: JS only (noscript fallback below) -->
   <script>
     (function () {
-      // Project Pages live under /kharchlog-forwarding/; custom domain kharchlog.in is at /
-      var base = '/kharchlog-forwarding';
-      var path = location.pathname || '/';
-      if (path === base || path.indexOf(base + '/') === 0) {
-        path = path.slice(base.length) || '/';
-      }
+      // Strip project-pages prefix so github.io/kharchlog-forwarding/...
+      // never becomes kharchlog.com/kharchlog-forwarding/...
+      var path = String(location.pathname || '/');
+      path = path.replace(/\/kharchlog-forwarding\/?/gi, '/');
+      path = path.replace(/\/{2,}/g, '/');
+      if (!path || path === '') path = '/';
       if (path.charAt(0) !== '/') path = '/' + path;
       var dest = 'https://kharchlog.com' + path + location.search + location.hash;
-      var c = document.getElementById('canon');
-      if (c) c.setAttribute('href', dest.split('#')[0]);
-      var r = document.getElementById('refresh');
-      if (r) r.setAttribute('content', '0;url=' + dest);
       location.replace(dest);
     })();
   </script>
 </head>
 <body>
-  <p>Moved to <a id="link" href="https://kharchlog.com/">kharchlog.com</a>.</p>
-  <script>
-    (function () {
-      var base = '/kharchlog-forwarding';
-      var path = location.pathname || '/';
-      if (path === base || path.indexOf(base + '/') === 0) {
-        path = path.slice(base.length) || '/';
-      }
-      if (path.charAt(0) !== '/') path = '/' + path;
-      document.getElementById('link').href =
-        'https://kharchlog.com' + path + location.search + location.hash;
-    })();
-  </script>
+  <p>Moved permanently to <a href="https://kharchlog.com/">https://kharchlog.com/</a></p>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=https://kharchlog.com/" />
+  </noscript>
 </body>
 </html>
