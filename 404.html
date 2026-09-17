@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting to kharchlog.com…</title>
+  <link rel="canonical" id="canon" href="https://kharchlog.com/" />
+  <meta http-equiv="refresh" id="refresh" content="0;url=https://kharchlog.com/" />
+  <script>
+    (function () {
+      var dest =
+        'https://kharchlog.com' +
+        location.pathname +
+        location.search +
+        location.hash;
+      var c = document.getElementById('canon');
+      if (c) c.setAttribute('href', dest.split('#')[0]);
+      var r = document.getElementById('refresh');
+      if (r) r.setAttribute('content', '0;url=' + dest);
+      location.replace(dest);
+    })();
+  </script>
+</head>
+<body>
+  <p>Moved to <a id="link" href="https://kharchlog.com/">kharchlog.com</a>.</p>
+  <script>
+    document.getElementById('link').href =
+      'https://kharchlog.com' + location.pathname + location.search + location.hash;
+  </script>
+</body>
+</html>
